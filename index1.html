@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<script type="text/javascript">
+		function readTextFile(file)
+		{
+		    var rawFile = new XMLHttpRequest();
+		    rawFile.open("GET", file, false);
+		    rawFile.onreadystatechange = function ()
+		    {
+		        if(rawFile.readyState === 4)
+		        {
+		            if(rawFile.status === 200 || rawFile.status == 0)
+		            {
+		                var allText = rawFile.responseText;
+		                var json = JSON.parse(allText);
+		                var indicator = json.indicator;
+		                var indicator = json.indicator;
+		                var datePart = json.datePart;
+		                var itinerary = json.itinerary;
+		                var listOfCoupons = itinerary.listOfCoupons;
+		                document.write('indicator=>isInvol'+indicator.isInvol+'</br>');
+		                document.write('indicator=>isScheduleChange'+indicator.isScheduleChange+'</br>');
+		                document.write('datePart=>'+datePart+'</br>');
+		                document.write('origin=>'+JSON.stringify(itinerary.origin)+'</br>');
+		                document.write('destination=>'+JSON.stringify(itinerary.destination)+'</br>');
+		                for(var i = 0; i < listOfCoupons.length; i++){
+		                	var insideCoupons = listOfCoupons[i];
+		                	document.write('listOfCoupons.origin=>'+JSON.stringify(insideCoupons.origin)+'</br>');
+		                	document.write('listOfCoupons.destination=>'+JSON.stringify(insideCoupons.destination)+'</br>');
+		                	document.write('listOfCoupons.cxr=>'+JSON.stringify(insideCoupons.cxr)+'</br>');
+		                	document.write('listOfCoupons.isTransit=>'+JSON.stringify(insideCoupons.isTransit)+'</br>');
+		                	document.write('listOfCoupons.isSurface=>'+JSON.stringify(insideCoupons.isSurface)+'</br>');
+		                	document.write('listOfCoupons.isExtraDetail=>'+JSON.stringify(insideCoupons.isExtraDetail)+'</br>');
+		                	document.write('listOfCoupons.isSideTrip=>'+JSON.stringify(insideCoupons.isSideTrip)+'</br>');
+		                	var couponExtraDetail = insideCoupons.couponExtraDetail;
+		                	document.write('couponExtraDetail.listOfSurcharges=>'+JSON.stringify(couponExtraDetail.listOfSurcharges)+'</br>');
+		                	document.write('couponExtraDetail.listOfStopovers=>'+JSON.stringify(couponExtraDetail.listOfStopovers)+'</br>');
+		                	document.write('couponExtraDetail.listOfClassDifferences=>'+JSON.stringify(couponExtraDetail.listOfClassDifferences)+'</br>');
+		                	document.write('couponExtraDetail.fareComponent=>'+JSON.stringify(couponExtraDetail.fareComponent)+'</br>');
+		                	document.write('couponExtraDetail.isBTIT=>'+JSON.stringify(couponExtraDetail.isBTIT)+'</br>');
+		                	document.write('couponExtraDetail.fareBasis=>'+JSON.stringify(couponExtraDetail.fareBasis)+'</br>');
+		                	document.write('</br></br>')
+		                }
+		            }
+		        }
+		    }
+		    rawFile.send(null);
+		}
+		readTextFile("data.json");
+	</script>
+</head>
+<body>
+
+</body>
+</html>

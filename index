@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>FCA Form</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <style type="text/css">
+        @import url(https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css);
+@import url(https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.4.3/css/mdb.min.css);
+
+*{
+    margin:0;
+    padding:0;
+}
+body {
+    margin: 0px;
+    padding: 0px;
+    /*background-image: url(https://wallpaperscraft.com/image/street_city_evening_black_white_lights_buildings_hdr_25485_1920x1080.jpg);*/
+    /*background-size: cover;*/
+    /*background-repeat: no-repeat;*/
+}
+
+.default-text {
+    /*color: #2BBBAD; */
+    /*color: #29367d; */
+    color: #5864a5; 
+}
+.info-text {
+    color: #33b5e5; 
+}
+.form-white .md-form label {
+  color: #fff; 
+}
+
+/*Customized from css*/
+.badge, .btn, .btn-primary.active:not([disabled]):not(.disabled), .btn-primary:not([disabled]):not(.disabled):active, .card:not([class*=card-outline-]), .chip, .jumbotron, .modal-dialog.cascading-modal .modal-c-tabs .nav-tabs, .modal-dialog.modal-notify .modal-header, .navbar, .pagination .active .page-link, .show>.btn-primary.dropdown-toggle, .z-depth-1 {
+    box-shadow: 0 2px 15px 0 rgba(0,0,0,.16), 0 2px 10px 0 rgba(0,0,0,.12);
+}
+
+.form-white input[type=text]:focus:not([readonly]) {
+    border-bottom: 1px solid #fff;
+    /*-webkit-box-shadow: 0 0px 14px 2px #fff;*/
+    -webkit-box-shadow: 0 1px 0 0 #fff;
+    box-shadow: 0 2px 0 0 #fff; 
+    /*box-shadow: 0 2px 10px 0 #fff; */
+
+}
+.form-white input[type=text]:focus:not([readonly]) + label {
+    color: #fff; 
+}
+.form-white input[type=password]:focus:not([readonly]) {
+    border-bottom: 1px solid #fff;
+    -webkit-box-shadow: 0 1px 0 0 #fff;
+    box-shadow: 0 2px 0 0 #fff; 
+}
+.form-white input[type=password]:focus:not([readonly]) + label {
+    color: #fff; 
+}
+.form-white input[type=password], .form-white input[type=text] {
+    border-bottom: 1px solid #fff; 
+}
+.form-white .form-control:focus {
+    color: #fff;
+}
+
+.card-adjust{
+    margin-left:  auto!important;
+    margin-right:  auto!important;
+    float: left;
+    /*border: 1px solid red!important;*/
+}
+
+.btn-outline-primary{
+    /*background: #1f295c!important;*/
+    border: 2px solid #29367d!important;
+    color: #29367d!important;
+    background: transparent;
+}
+.btn-outline-primary:hover,.btn-outline-primary:active,.btn-outline-primary:focus{
+    /*background: #1f295c!important;*/
+    color: #fff!important;
+    background: #29367d!important;
+}
+
+.btn-outline-secondary{
+    border: 2px solid gray;
+    color: gray!important;
+}
+.btn-outline-secondary:hover,.btn-outline-secondary:active,.btn-outline-secondary:focus{
+    border: 2px solid gray;
+    background: gray;
+    color: #fff!important;
+}
+.car-res{
+    min-height: 300px;
+}
+.result{
+    
+    padding-left:10px;
+    padding-right:10px;
+}
+    </style>
+</head>
+<body>
+    <div class="col-lg-12">
+        <!-- Grid column -->
+        <div class="col-md-5 mb-4 mt-5 card-adjust">
+            <div class="card">
+                <div class="card-body">
+                    
+                    <h3 class="text-center default-text"><i class="fa fa-envelope-o"></i> Form</h3>
+                    <!--Body-->
+                    <form id="form" method="POST">
+                    <div class="md-form">
+                        <input type="text" id="fcaString" name="fcaString" minlength="31" maxlength="250" class="form-control fcaString" required>
+                        <label for="fcaString">FCA String</label>
+                    </div>
+                    <div class="md-form">
+                        <input type="text" id="fareBasis" name="fareBasis" maxlength="60" class="form-control fareBasis">
+                        <label for="fareBasis">Fare Base</label>
+                    </div>
+                    <div class="text-center">
+                        <button type="submit" class="btn btn-outline-primary waves-effect waves-light form-submit" id="form-submit">Submit</button>
+                        <button type="reset" class="btn btn-outline-secondary" id="resetForm">Reset</button>
+                    </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="col-md-6 mb-4 mt-5 card-adjust" style="float: right">
+            <div class="card">
+                <div class="card-body car-res" >
+                    <h3 class="text-center default-text"><i class="fa fa-check"></i> Result</h3>
+                    <div class="result" >
+                        <table class="table table-bordered result" id="result">
+                            <thead class="thead-light">
+                                <tr>
+                                    <th>datePart</th>
+                                    <!-- <th>To</th> -->
+                                    <th>cxr</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td></td>
+                                    <!-- <td></td> -->
+                                    <td></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <!-- Grid column -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.4.1/js/mdb.min.js"></script>
+    <script type="text/javascript">
+        document.getElementById("form").reset();
+    </script>
+    <script type="text/javascript">
+        $(document).ready(function() {
+
+            // process the form
+            // $('form').submit(function(event) {
+            $(document).on('click', '#form-submit', function(event){
+
+                // var formData = {
+                //     'fcaString'              : $('input[name=fcaString]').val(),
+                //     'fareBasis'             : $('input[name=fareBase]').val()
+                // };
+
+                fcaString = $('#fcaString').val();
+                fareBasis = $('#fareBasis').val();
+                
+                var formData ={};
+
+                formData.fcaString = fcaString;
+                if(fcaString.length <= 30){
+                    alert('Please enter valid FCA string');
+                    return false;    
+                }
+                if(fareBasis==""){
+                    formData.fareBasis = null;
+                    
+                    console.log("IF stmt",formData)
+                }
+                else{
+                    formData.fareBasis = fareBasis;
+                    console.log("else stmt", formData)
+                }
+
+
+                // process the form
+                $.ajax({
+                    type        : 'GET', // define the type of HTTP verb we want to use (POST for our form)
+                    url         : 'http://10.245.240.102:8060/smartpra/proration/fca/parse', // the url where we want to POST
+                    data        : formData, // our data object
+                    dataType    : 'json', // what type of data do we expect back from the server
+                    // encode          : true,
+                    contentType: "application/json",
+                    crossDomain : true
+                })
+                    // using the done promise callback
+                    .done(function(data) {
+
+                        // log data to the console so we can see
+                        console.log(data); 
+                        // myObj = data;
+                        // result.innerHTML = JSON.stringify(myObj);
+                        var contact = JSON.stringify(data);
+                        console.log(contact);
+                        for(var i in contact){
+                         var tr=$("<tr></tr>");
+                         tr.append(
+                                "<td>" + contact[i].datePart + "</td>" +
+                                "<td>" + contact[i].cxr + "</td>");
+                         $(".result tbody").append(tr);
+                         i++;
+                         console.log("this is tr",tr)
+                         tr.append()
+                     }
+                        // enter this string in input field of UI: fca string: NYC BA LON Q10.00 // ROM DL PAR M/BT TWP2/LN106 AF NYC Q10.00 M/IT ZHX2/LN106 END  ||||| fare basis: TWP2/LN106,ZHX2/LN106
+                        // here we will handle errors and validation messages
+                    })
+                    .fail(function(data) {
+                        alert("Enter valid input");
+                        // show any errors
+                        // best to remove for production
+                        // console.log("Fail",data);
+                    });
+                event.preventDefault();
+            });
+
+        });
+    </script>
+</body>
+</html>

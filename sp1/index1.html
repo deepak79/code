@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Smart PRA FCA - Sprint1</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="css/style.css">
+
+
+</head>
+<body>
+
+<div class="container-fluid">
+    <div class="container">
+        <div class="table-wrapper">
+            <h2 class="text-center">GFP</h2>
+            <form name="ipForm" id="ipForm" method="">
+                <div class="form-group">
+                    <div class="col-md-12">
+                        <table class="table table-bordered"  id="dynamic_field">
+                            <thead class="thead-dark thead-backg">
+                                <tr>
+                                    <th>Doc No</th>
+                                    <th>Cpn No</th>
+                                    <th>Origin</th>
+                                    <th>Destination</th>
+                                    <th>CXR</th>
+                                    <th>Fare Basis</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody id="myTBody">
+                                <tr>
+                                    <td><input type="text" name="docNo" id="docNo" required ></td>
+                                    <td><input type="text" name="couponNo" id="couponNo" required ></td>
+                                    <td><input type="text" name="origin" id="origin" size="7"></td>
+                                    <td><input type="text" name="destination" id="destination" size="7"></td>
+                                    <td><input type="text" name="cxr" id="cxr" size="4"></td>
+                                    <td><input type="text" name="fareBasis" id="fareBasis" size="10"></td>
+                                    <td><button type="button" name="add" id="add" class="btn btn-sm btn-success"><i class="fa fa-plus" aria-hidden="true"></i></button></td>
+                                </tr>
+                            </tbody>
+                            <tr>
+                                <td colspan="7"><input type="text" name="fcaString" id="fcaString" placeholder="Enter FCA string" class="form-control"></td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <!--     <div class="clearfix"></div> -->
+                    <div class="col-md-12 mt-5" style="padding: 0">
+                        <input type="button" name="submit" id="submit" class="btn btn-primary" value="Submit" />  
+                        <input type="button" name="resetBtn" id="resetBtn" class="btn btn-info" value="Reset" />  
+                    </div>
+                </div>
+                
+            </form>
+        </div> 
+
+        <div class="table-wrapper hidden" style="margin-top:80px">
+            <h2 class="text-center">Enrich GFP</h2>
+                <table class="table table-bordered result" id="result">
+                    <thead class="thead-light">
+                        <tr>
+                            <th id="dummy">D/R/Y</th>
+                            <th id="st">ST</th>
+                            <th id="ts">T/S</th>
+                            <th id="docNo">Doc No</th>
+                            <th id="cpnNo">Cpn No</th>
+                            <th id="sectNo">Sect No</th>
+                            <th id="origin">Origin</th>
+                            <th id="dest">Destination</th>
+                            <th id="airportCode">CXR</th>
+                            <th id="fareBasis">Fare Basis</th>
+                            <th id="fcNo">FC No</th>
+                            <th id="fcValue">FC Value</th>
+                            <th id="btItNo">BT/IT Ind</th>
+                            <th id="fcaCxr">FCA CXR</th>
+                        </tr>
+                    </thead>
+                    <tbody id="resBody">
+                        <div id="enrich-info"></div>
+                        <tr class="tkt">
+                            <thead class="thead-light">
+                                <th colspan="15" >Ticket Level Information</th>
+                            </thead>
+                        </tr>
+                        <tr class="second-row"></tr>
+                        <tr>
+                            <th colspan="15">Misc charges</th>
+                        </tr>
+                        <tr class="surcharge"></tr>
+                        <tr class="classDiffInfo"></tr>
+                        <tr class="stopover"></tr>
+                        <tr class="plusInfo"></tr>
+                        <tr class="lessInfo"></tr>
+                        <tr class="plusUpInfo"></tr>
+                        <tr>
+                            <th colspan="15">PD Taxes</th>
+                        </tr>
+                        <!-- Created divto show error msgs when GFP not matches with service  -->
+                        <tr>
+                            <thead class="thead-light">
+                                <th colspan="15">Error Message</th>
+                            </thead>
+                        </tr>
+                        <tr class="exceptionInfo"></tr>
+                    </tbody>
+                </table>
+
+               <table class="table table-bordered error-result-table">
+                    <tbody>
+                        <tr>
+                            <thead class="thead-light">
+                                <th colspan="15">Error Message</th>
+                            </thead>
+                        </tr>
+                        <tr class="exceptionInfo"></tr>
+                    </tbody>
+                </table>
+                
+        </div>
+    </div>
+</div>
+<script src="js/jquery-3.3.1.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/popper.min.js"></script>
+<script type="text/javascript" src="js/main.js"></script>
+</body>
+</html>

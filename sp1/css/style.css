@@ -1,0 +1,51 @@
+@import url(https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css);
+@import url(https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.4.3/css/mdb.min.css);
+
+*{
+    margin:0;
+    padding:0;
+}
+body {
+    margin: 0px;
+    padding: 0px;
+    /*background-image: url(https://wallpaperscraft.com/image/street_city_evening_black_white_lights_buildings_hdr_25485_1920x1080.jpg);*/
+    /*background-size: cover;*/
+    /*background-repeat: no-repeat;*/
+}
+.table-wrapper{
+    margin: 40px 50px;
+    /*margin: 40px 150px;*/
+    /*border: 1px solid red;*/
+}
+.table .thead-backg th {
+    color: #fff;
+    background: #232c5f!important;
+    /*border-color: #232c5f;*/
+    /*border-top-color: #232c5f!important;*/
+}
+table.table..thead-backg thead th {
+    border-top: 1px solid #232c5f!important;
+}
+.thead-backg> input[type="text"]:hover,.thead-backg input[type="text"]:focus{
+    border-bottom: 1px solid transparent!important;
+}
+.thead-backg th {
+    white-space: nowrap;
+}
+
+.result th {
+    font-size: .9rem;
+    font-weight: normail!important; 
+}
+
+.hidden{
+    display: none;
+}
+
+.output-table{
+    margin: 40px 50px;
+    /*margin: 40px 150px;*/
+    /*border: 1px solid red;*/
+}
+
+/*for adding to border to the input gfp header*/
