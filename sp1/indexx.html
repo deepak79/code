@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>SmartPRA FCA</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="css/style.css">
+</head>
+<style type="text/css">
+    /*@import url(https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css);*/
+@import url(https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.4.3/css/mdb.min.css);
+*{
+    margin:0;
+    padding:0;
+}
+body {
+    margin: 0px;
+    padding: 0px;
+    /*background-image: url(https://wallpaperscraft.com/image/street_city_evening_black_white_lights_buildings_hdr_25485_1920x1080.jpg);*/
+    /*background-size: cover;*/
+    /*background-repeat: no-repeat;*/
+}
+.table-edit .thead-backg th {
+    color: #fff;
+    background: #232c5f!important;
+    border-top: 1px solid #232c5f;
+    vertical-align: top;
+    text-align: center;
+}
+.no-wrap-heading{
+   white-space:pre-wrap; 
+}
+.wrap-heading{
+   white-space:wrap;  
+}
+/*.table-edit tbody tr td input{
+    border: 1px solid red;
+    margin: 0px 2px!important;
+}
+.table-edit tbody tr td{
+    border: 1px solid blue;
+    padding: 0px 2px!important;
+}
+.table td, .table th {
+    padding: 6px;
+    vertical-align: top;
+    border-top: 1px solid #dee2e6;
+}
+*/
+</style>
+<body>
+<div class="container-fluid">
+    <table class="table table-bordered  table-hover table-edit"  id="dynamic_field">
+        <thead class="thead-dark thead-backg">
+            <tr>
+                <th>D/R<br/>Y </th>
+                <th>ST</th>
+                <th>T/S</th>
+                <th>Doc<br/>#</th>
+                <th>Cpn #</th>
+                <th>Sect #</th>
+                <th>From</th>
+                <th>To</th>
+                <th>CXR</th>
+                <th >Flight<br/> #</th>
+                <th>RBD</th>
+                <th>Flight<br/>Date</th>
+                <th>Fare<br/>Basis</th>
+                <th>FC<br/>#</th>
+                <th>FC<br/>Value</th>
+                <th>BTIT<br/>Ind</th>
+                <th>ATBP<br/>#</th>
+                <th>ATBP</th>
+                <th>WM</th>
+                <th>Final<br/>Prorate</th>
+                <th>Surcharge</th>
+                <th>Class<br/>Diff</th>
+                <th>Proviso</th>
+                <th>SRP</th>
+                <th>MPA</th>
+                <th>MPA WO<br/>Prov</th>
+                <th>SPA</th>
+                <th>NET Fare<br/>Prorate</th>
+                <!-- <th>Action</th> -->
+            </tr>
+
+            <!-- <tr>
+                <th>D/R/Y<br/> </th>
+                <th>ST</th>
+                <th>T/S</th>
+                <th style="color: red; white-space:pre;">Doc No</th>
+                <th style="color: red">Cpn<br/>No</th>
+                <th style="color: red">Sect<br/>No</th>
+                <th style="width: 2%">BTIT<br/>Ind</th>
+                <th style="color: red">FCA<br/>CXR</th>
+                <th>From</th>
+                <th>To</th>
+                <th>CXR</th>
+                <th>Flight<br/>No</th>
+                <th>RBD</th>
+                <th>Flight<br/>Date</th>
+                <th>Fare<br/>Basis</th>
+                <th>FC<br/>No</th>
+                <th>FC<br/>Value</th>
+                <th>ATBP<br/>No</th>
+                <th>ATBP<br/>Value</th>
+                <th>ATBP</th>
+                <th>WM</th>
+                <th>Surcharge</th>
+                <th>Class<br/>Diff</th>
+                <th>Proviso</th>
+                <th>SRP</th>
+                <th>MPA</th>
+                <th>MPA<br/>WO<br/>Prov</th>
+                <th>SPA</th>
+                <th style="color: red">NET<br/>Fare<br/>Prorate</th>
+                <th>Final<br/>Prorate</th>
+            </tr> -->
+
+
+           <!--  <tr class="">
+                <td width="2%">D/R/Y</td>
+                <td width="2%">ST</td>
+                <td width="2%">T/S</td>
+                <td width="2%">Sect #</td>
+                <td width="2%">BTIT Ind</td>
+                <td width="2%">From</td>
+                <td width="3%">To</td>
+                <td width="2%">CXR</td>
+                <td width="2%">Flight #</td>
+                <td width="2%">RBD</td>
+                <td width="7%">Flight Date</td>
+                <td width="6%">Fare Basis</td>
+                <td width="2%">FC #</td>
+                <td width="5%">FC Value</td>
+                <td width="5%">ATBP</td>
+                <td width="3%">WM</td>
+                <td width="2%">Surcharge</td>
+                <td width="4%">Class Diff</td>
+                <td width="2%">Proviso</td>
+                <td width="2%">SRP</td>
+                <td width="2%">MPA</td>
+                <td width="2%">MPA WO Prov</td>
+                <td width="2%">SPA</td>
+                <td width="2%">Final Prorate</td> 
+            </tr> -->
+
+        </thead>
+        <tbody id="myTBody">
+            <tr>
+                <td><input type="text" name="dummy" id="dummy" class="text-uppercase" placeholder="D"></td>
+
+                <td><input type="text" name="st" id="st" class="text-uppercase" placeholder="Y"></td>
+
+                <td><input type="text" name="ts" id="ts" class="text-uppercase" placeholder="X/"></td>
+
+                <td><input type="text" name="docNo" id="docNo" class="text-uppercase" placeholder="1234567890" style="width: 90px;"></td>
+
+                <td><input type="text" name="cpnNo" id="cpnNo" class="text-uppercase" placeholder="1"></td>
+
+                <td><input type="text" name="sectNo" id="sectNo" class="text-uppercase" placeholder="1"></td>
+
+                <td><input type="text" name="origin" id="origin" maxlength="3" onkeypress="return (event.charCode > 64 && event.charCode < 91) || (event.charCode > 96 && event.charCode < 123)" class="text-uppercase" placeholder="PAR"></td>
+
+                <td><input type="text" name="destination" id="destination" maxlength="3" onkeypress="return (event.charCode > 64 && event.charCode < 91) || (event.charCode > 96 && event.charCode < 123)" class="text-uppercase" placeholder="LON" style="width: 30px;"></td>
+
+                <td><input type="text" name="cxr" id="cxr" maxlength="2" onkeypress="return (event.charCode==45) || (event.charCode > 46 && event.charCode < 58) || (event.charCode > 64 && event.charCode < 91) || (event.charCode > 96 && event.charCode < 123)" class="text-uppercase" placeholder="AI" style="width: 25px;"></td>
+
+                <td><input type="text" name="flightNo" id="flightNo" class="text-uppercase" placeholder="12345" style="width: 45px;"></td>
+
+                <td><input type="text" name="rbd" id="rbd" class="text-uppercase" placeholder="N" style="width: 20px;"></td>
+
+                <td><input type="text" name="flightDate" id="flightDate" class="text-uppercase" placeholder="12/12/2018" style="width: 85px;"></td>
+
+                <td><input type="text" name="fareBasis" id="fareBasis" class="text-uppercase" placeholder="NLARRSG8" style="width: 80px;"></td>
+
+                <td><input type="text" name="fcNo" id="fcNo" class="text-uppercase" placeholder="1"></td>
+
+                <td><input type="text" name="fcValue" id="fcValue" class="text-uppercase" placeholder="20000.00" style="width: 80px;"></td>
+
+                <td><input type="text" name="btitInd" id="btitInd" class="text-uppercase" placeholder="Y"></td>
+
+                <td><input type="text" name="atbpNo" id="atbpNo" class="text-uppercase" placeholder="9" style="width: 30px;"></td>
+
+                <td><input type="text" name="atbpValue" id="atbpValue" class="text-uppercase" placeholder="1234567.00" style="width: 90px;"></td>
+
+                <td><input type="text" name="wm" id="wm" class="text-uppercase" placeholder="6750" style="width: 35px;"></td>
+
+                <td><input type="text" name="finalProrate" id="finalProrate" class="text-uppercase" placeholder="1234567.00" style="width:85px;"></td>
+
+                <td><input type="text" name="surcharge" id="surcharge" class="text-uppercase" placeholder="10000.00" style="width:70px;"></td>
+
+                <td><input type="text" name="classDiff" id="classDiff" class="text-uppercase" placeholder="10000.67" style="width:70px;"></td>
+
+                <td><input type="text" name="proviso" id="proviso" class="text-uppercase" placeholder="1234567.33" style="width: 90px;"></td>
+
+                <td><input type="text" name="srp" id="srp" class="text-uppercase" placeholder="1234567.00" style="width: 85px;"></td>
+
+                <td><input type="text" name="mpa" id="mpa" class="text-uppercase" placeholder="1234567.00" style="width: 85px;"></td>
+
+                <td><input type="text" name="mpaWoProviso" id="mpaWoProviso" class="text-uppercase" placeholder="1234567.00" style="width:85px;"></td>
+                <td><input type="text" name="spa" id="spa" class="text-uppercase" placeholder="1234567.00" style="width:85px;"></td>
+
+                <td><textarea  name="netFareProrate" id="netFareProrate" class="text-uppercase" placeholder="1234567.90" style="width:85px;word-break:break-all;"></textarea></td>
+
+                <!-- <td><input type="text" name="action" id="action" style="width:40px;"></td> -->
+            </tr>
+            <tr class="total-amount">
+                <!-- <td></td> -->
+                <th colspan="12">Total</th>
+                <td colspan="1">SGD</td>
+                <td colspan="1"></td>
+                <td colspan="1"></td>
+                <td colspan="1"></td>
+                <td colspan="1"></td>
+                <td colspan="1" class="atbpValue">2868.33</td>
+                <td colspan="1"></td>
+                <td colspan="1"></td>
+                <td colspan="1"></td>
+                <td colspan="1" class="classDiff">409.67</td>
+                <td colspan="1"></td>
+                <td colspan="1"></td>
+                <td colspan="1" class="mpa">2868.33</td>
+                <td colspan="1"></td>
+                <td colspan="1" class="netFareProrate">190.90</td>
+                <td colspan="1" class="finalProrate">2000.00</td>
+            </tr>
+            <tr class="blank-row">
+                <td colspan="28"></td>
+            </tr>
+            <tr class="tkt">
+                <thead class="thead-light">
+                    <th colspan="28" >FCA</th>
+                </thead>
+            </tr>
+            <tr>
+                <td colspan="28"><input type="text" name="fcaString" id="fcaString" placeholder="Enter FCA string" class="form-control text-uppercase" ></td>
+            </tr>
+            <!-- <tr class="miscCharges">
+                <thead class="thead-light">
+                    <th colspan="28" >Misc charges in NUC</th>
+                </thead>
+            </tr>
+            <tr class="surcharge">
+                <th></th>
+            </tr>
+            <tr class="classDiffInfo">
+                <td></td>
+            </tr>
+            <tr class="stopover">
+                <td></td>
+            </tr>
+            <tr class="plusInfo">
+                <td></td>
+            </tr>
+            <tr class="lessInfo">
+                <td></td>
+            </tr>
+            <tr class="plusUpInfo"></tr> -->
+            <tr>
+                <th colspan="28">Misc charges</th>
+            </tr>
+            <tr class="surcharge"><td colspan="28"></td></tr>
+            <tr class="classDiffInfo"><td colspan="28"></td></tr>
+            <tr class="stopover"><td colspan="28"></td></tr>
+            <tr class="plusInfo"><td colspan="28"></td></tr>
+            <tr class="lessInfo"><td colspan="28"></td></tr>
+            <tr class="plusUpInfo"><td colspan="28"></td></tr>
+            <tr class="nucTotal">
+                <th>NUC Total</th>
+                <td>2400.00</td>
+                <th>ROE</th>
+                <td>1.365873</td>
+                <td></td>
+            </tr>
+            <tr class="grossFare">
+                <th>Gross Fare</th>
+                <td>SGD</td>
+                <td>3278.00</td>
+                <th>NET Fare</th>
+                <td>SGD</td>
+                <td>2000.00</td>
+                <td></td>
+            </tr>
+            <tr class="totalShareNonCx">
+                <td colspan="2"></td>
+                <td colspan="2"></td>
+                <th>Total share of non CX</th>
+                <td>SGD</td>
+                <td>820.00</td>
+                <th>502.57 +</th>
+            </tr>
+            <tr class="totalShareNonCx">
+                <td colspan="2"></td>
+                <td colspan="2"></td>
+                <th>Residual NET Fare</th>
+                <td>SGD</td>
+                <td>600.57</td>
+                <th>2000.00 – 1399.34</th>
+            </tr>
+            <tr class="totalShareNonCx">
+                <td colspan="2"></td>
+                <td colspan="2"></td>
+                <th>Residual NET Fare ATBP</th>
+                <td>SGD</td>
+                <td>190.90</td>
+                <th>600.57 - 409.67</th>
+            </tr>
+        </tbody>
+        
+    </table>
+    <div class="form-group">
+        <!--     <div class="clearfix"></div> -->
+        <div class="col-md-12 mt-5" style="padding: 0">
+            <input type="button" name="submit" id="submit" class="btn btn-primary" value="Submit" />  
+            <input type="button" name="resetBtn" id="resetBtn" class="btn btn-info" value="Reset" />  
+        </div>
+    </div>
+</div>
+<script src="js/jquery.js"></script>
+<!-- Added for datepicker -->
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script src="js/bootstrap.js"></script>
+<script src="js/popper.js"></script>
+<script type="text/javascript" src="js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <style type="text/css">
+        td, tr, th {
+            border: 1px solid black;
+        }
+        table {
+            border-collapse: collapse;
+        }
+        td, th {
+            min-width: 50px;
+            height: 21px;
+        }
+        span {
+            width: 100%;
+            display: block;
+        }
+    </style>
+</head>
+<script>
+
+function insRow()
+{
+    var x=document.getElementById('myTable');
+    // deep clone the targeted row
+    var new_row = x.rows[1].cloneNode(true);
+    // get the total number of rows
+    var len = x.rows.length;
+
+    // append the new row to the table
+    x.appendChild(new_row);
+
+    var len1 = x.rows.length;
+    for (var i = 1; i < len1; i++) {
+        var colLen = x.rows[i].cells.length;
+        for(var j = 0; j < colLen -1 ; j++){
+            x.rows[i].cells[j].getElementsByTagName('input')[0].id = i+""+j;
+            if(i == len1-1){
+                x.rows[i].cells[j].getElementsByTagName('input')[0].value = "";
+            }
+        }
+    }
+}
+function callAPI()
+{
+    var datas = getData();
+    $.ajax({
+        type: "POST",
+        url: "data.php",
+        data: JSON.stringify(datas),
+        contentType: "application/json; charset=utf-8",
+        dataType: "json",
+        success: function(result) {
+            bindData(result);
+        },
+        error : function (jqXHR, textStatus, errorThrown) {
+            alert(errorThrown);
+        }
+    });
+}
+function bindData(result)
+{
+    var x=document.getElementById('myTable');
+    var len1 = x.rows.length;
+    for (var i = 1; i < len1; i++) {
+        var colLen = x.rows[i].cells.length;
+        for(var j = 0; j < colLen -1 ; j++){
+            x.rows[i].cells[j].getElementsByTagName('input')[0].value = getValue(result,i,j);
+        }
+    }
+}
+function getValue(result,x,y){
+}
+function getData()
+{
+    var arr = [];
+    var x=document.getElementById('myTable');
+    var len1 = x.rows.length;
+    for (var i = 1; i < len1; i++) {
+        var obj = {};
+        var colLen = x.rows[i].cells.length;
+        for(var j = 0; j < colLen -1 ; j++){
+            obj[j] =  x.rows[i].cells[j].getElementsByTagName('input')[0].value;
+        }
+        arr.push(obj);
+    }
+    return arr;
+}
+function deleteRow(row)
+{
+    var i=row.parentNode.parentNode.rowIndex;
+    document.getElementById('myTable').deleteRow(i);
+}
+</script>
+<body>
+<table>
+    <tbody id="myTable">
+        <tr>
+            <th>A</th>
+            <th>B</th>
+            <th>C</th>
+            <th>D</th>
+            <th>Operation</th>
+        </tr>
+        <tr>
+            <td><input size=25 type="text"/></td>
+            <td><input size=25 type="text"/></td>
+            <td><input size=25 type="text"/></td>
+            <td><input size=25 type="text"/></td>
+            <td><button id="btn" type="button" onclick="insRow()">Add</button><input type="button" id="delPOIbutton" value="Delete" onclick="deleteRow(this)" /></td>
+        </tr>    
+    </tbody>
+</table>
+<button type="button" onclick="callAPI()">Call API</button>
+</body>
+<script src="jq.js"></script>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+<!--
+Learn to dynamically add/remove rows of a table using jquery
+Script by - Dhanesh Mane
+-->
+<table id="myTable">
+    <tbody>
+        <tr>
+            <th></th>
+            <th>A</th>
+            <th>B</th>
+            <th>C</th>
+            <th>Operation</th>
+        </tr> 
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td><a href="javascript:void(0);" class="add">Add</a>
+	  		<a href="javascript:void(0);" class="remove">Remove</a></td>
+        </tr>
+    </tbody>
+</table>
+</body>
+<script src="js/jquery.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+	$("#table").on('click','.add',function(){
+    rowObj = $("#table tr:first").clone();
+    $( "#table" ).append(rowObj);
+	});
+    $("#table").on('click','.remove',function(){
+        $(this).parent().parent().remove();
+    });
+});
+</script>
+
+</html>
